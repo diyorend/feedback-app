@@ -1,6 +1,7 @@
 import React from "react";
 import FeedbackItem from "../components/FeedbackItem";
 import PropTypes from "prop-types";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FeedbackItemList = ({ feedback, deleteHandler }) => {
   if (!feedback || feedback.length === 0) {
@@ -18,7 +19,6 @@ const FeedbackItemList = ({ feedback, deleteHandler }) => {
 FeedbackItemList.propTypes = {
   feedback: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired,
       rating: PropTypes.number.isRequired,
     })

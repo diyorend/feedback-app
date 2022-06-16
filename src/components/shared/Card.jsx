@@ -31,5 +31,6 @@ const CardStyled = styled.div`
   width: 32rem;
   border-radius: 30px;
   padding: 0.5rem 2rem;
+  padding: 1rem 1.6rem;
 `;
 export default Card;
