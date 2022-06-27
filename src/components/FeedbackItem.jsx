@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 import styled from "styled-components";
 import Card from "./shared/Card";
 import PropTypes from "prop-types";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaEdit } from "react-icons/fa";
 
-const FeedbackItem = ({ item, deleteHandler }) => {
+const FeedbackItem = ({ item }) => {
+  const { deleteFeedback, editFeedback } = useContext(FeedbackContext);
   return (
     <Card>
       <Grade>
         <span>{item.rating}</span>
       </Grade>
-      <CloseBtn onClick={() => deleteHandler(item.id)}>
+      <CloseBtn onClick={() => deleteFeedback(item.id)}>
         <FaTimes />
       </CloseBtn>
+      <EditBtn onClick={() => editFeedback(item)}>
+        <FaEdit />
+      </EditBtn>
       <div>{item.text}</div>
     </Card>
   );
@@ -47,6 +52,18 @@ const CloseBtn = styled.button`
 
   svg {
     color: #c4c402;
+  }
+`;
+const EditBtn = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 40px;
+
+  svg {
+    color: #0276c4;
   }
 `;
 export default FeedbackItem;

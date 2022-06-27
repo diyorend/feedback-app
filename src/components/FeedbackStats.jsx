@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
-const FeedbackStats = ({ feedback }) => {
+import FeedbackContext from "../context/FeedbackContext";
+
+const FeedbackStats = () => {
+  const { feedback } = useContext(FeedbackContext);
+
   //calculate avg
   let average = (
     feedback.reduce((acc, cur) => {
@@ -27,7 +30,4 @@ const Stats = styled.div`
   padding: 0.5rem 0;
 `;
 
-FeedbackStats.propTypes = {
-  feedback: PropTypes.array.isRequired,
-};
 export default FeedbackStats;
